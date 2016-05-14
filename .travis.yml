@@ -34,7 +34,7 @@ before_install:
   - sudo mv Yudino-master /usr/local/share/arduino/libraries/Yudino
 
 script:
-  - arduino --verify -v -v -v --board ${BOARD} $PWD/MyHeater.ino
+  - arduino --verify -v --board ${BOARD} $PWD/UnderfloorHeater.ino
 
 notifications:
   email:
