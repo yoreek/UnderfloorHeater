@@ -27,6 +27,7 @@ before_install:
   - wget https://github.com/yoreek/Webduino/archive/master.zip
   - unzip master.zip
   - rm master.zip
+  - rm -rf SdFat-master
   - sudo mv Webduino-master /usr/local/share/arduino/libraries/Webduino
   - wget https://github.com/yoreek/Yudino/archive/master.zip
   - unzip master.zip
