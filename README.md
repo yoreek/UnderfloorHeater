@@ -47,7 +47,7 @@ The project is designed to control an heating system in order to keep the temper
  * Download and Install [Webduino](https://github.com/yoreek/Webduino) library.
  * Download and Install [Yudino](https://github.com/yoreek/Yudino) library.
  * Restart the Arduino Software
- * [Download](https://github.com/yoreek/Arduino-MyHeater/archive/master.zip) the Latest release from gitHub.
+ * [Download](https://github.com/yoreek/UnderfloorHeater/archive/master.zip) the Latest release from gitHub.
  * Unzip to any folder.
  * Run make to compile.
 
