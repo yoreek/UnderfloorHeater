@@ -1,0 +1,217 @@
+body {
+    font-family: "Ubuntu Light";
+    color: #333
+}
+
+p {
+    margin: 0;
+}
+
+.heater-title-block {
+    width: 100%;
+}
+
+.heater-title {
+    font-size: 32px;
+    text-transform: capitalize;
+    float: left;
+}
+
+.current-time {
+    font-size: 32px;
+    float: right;
+}
+
+.ajax-loader {
+    width: 16px;
+    height: 11px;
+    margin: -2px 10px;
+}
+
+.heater.sync .ajax-loader {
+    background: transparent url("../img/ajax-loader.gif") no-repeat scroll  0 0;
+}
+
+.heater-state {
+    width: 46px;
+    height: 52px;
+}
+
+.heater-turned .heater-state {
+    background: transparent url("../img/32px-fire-icon.png") no-repeat scroll 100% 0%;
+}
+
+.heater-setpoint-block {
+    text-align: center;
+}
+
+.heater-setpoint {
+    float: left;
+    font-size: 46px;
+    padding: 20px 8px;
+    width: 162px;
+}
+
+.heater-control {
+    float: left;
+    width: 62px;
+}
+
+.container:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+
+.heater-setpoint-button {
+    border: none;
+    background: transparent;
+    cursor:pointer;
+}
+
+.heater {
+    margin: 0px auto;
+    max-width: 302px;
+    padding: 4px;
+    margin-top: 20px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/*
+#toggle {
+    font-size:22px;
+    color:#fff;
+    background-color:#555;
+    border-radius: 12px;
+    border:0;
+    padding:10px;
+    cursor:pointer;
+    text-decoration:none;
+}
+*/
+
+.btn-small {
+    font-size:12px;
+    color:#fff;
+    background-color:#555;
+    cursor:pointer;
+    text-decoration:none;
+    border:0;
+    margin-right:-3px;
+    padding-top:1px;
+    padding-bottom:1px;
+    border-radius: 5px;
+}
+
+.btn-large {
+    font-size: 22px;
+    color: #fff;
+    background-color: #555;
+    cursor: pointer;
+    text-decoration: none;
+    border: 0;
+    margin-right:-3px;
+    border-radius: 12px;
+    padding: 2px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+:focus {
+  outline: none !important;
+}
+
+::-moz-focus-inner {
+  border: 0 !important;
+}
+
+.btn-small.active, .btn-large.active {
+    background-color: #ff9600;
+}
+
+.btn-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-center {
+    border-radius: 0px;
+}
+
+.slider {
+    position: relative;
+    width:100%;
+    background-color:#fff;
+    height:22px;
+    margin-top:10px;
+}
+
+.slider-segment {
+    position: absolute;
+    background-color:#ff9600;
+    height:100%;
+    border-left: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.slider-label {
+    position: absolute;
+    color:#fff;
+    margin-top:3px;
+    margin-left:8px;
+    font-weight:bold;
+    text-shadow: 1px 1px rgba(200,200,200,0.5);
+    font-size:12px;
+    pointer-events: none;
+}
+
+.slider-button {
+    position: absolute;
+    top:0px;
+    width:20px;
+    height:100%;
+    margin-left:-10px;
+    margin-top:2px;
+    cursor:pointer;
+}
+
+.slider-segment-temperature {
+    width:35px;
+}
+
+input[type=text] {
+    width: 40px;
+    border: 0px;
+    border-bottom: 1px solid #000;
+    font-size: 12px;
+    color:#333;
+    text-align:right;
+    margin: 0;
+}
+
+.slider-segment-ok {
+    padding: 0;
+}
+
+.slider-segment-blank {
+    height: 20px;
+    font-size: 10px;
+}
+
+.timemarker {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 0px;
+    height: 22px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    pointer-events: none;
+    border-left: 1px solid #fff;
+}

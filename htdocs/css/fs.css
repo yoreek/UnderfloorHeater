@@ -1,0 +1,62 @@
+body {
+    font-family: "Ubuntu Light";
+    color: #333
+}
+
+p {
+    margin: 10px;
+}
+
+:focus {
+  outline: none !important;
+}
+
+::-moz-focus-inner {
+  border: 0 !important;
+}
+
+a {
+    color:#61666c;
+    text-decoration:none;
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+tr:hover td {
+    background: #94b5c2;
+}
+th, td {
+    outline:0;
+    border:0;
+    text-align: left;
+    padding: 5px 10px 5px 0;
+    border-bottom: 1px solid #edf1f5;
+    vertical-align: middle;
+    text-align: left;
+}
+tr td:first-of-type, tr th:first-of-type {
+    padding-left: 10px;
+}
+/* 2nd Column: Filename */
+th + th {
+    width: 65%;
+}
+/* 3rd Column: Last Modified */
+th + th + th {
+}
+/* 4th Column: Size */
+th + th + th + th {
+    width: 5%;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+td a {
+    display: block;
+}
+
+#status {
+    color: red;
+}

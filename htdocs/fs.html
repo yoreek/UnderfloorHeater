@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of /</title>
+    <link rel="stylesheet" href="css/fs.css" type="text/css" />
+</head>
+<body>
+    <h3 id="loading">Loading ...</h3>
+    <h3 id="status" style="display:none"></h3>
+    <div id="container" style="display:none">
+        <h3 id="title">Index of /</h3>
+        <p>
+            <button id="home">Home</button>
+            <button id="refresh">Refresh</button>
+            <button id="delete">Delete selected file(s)</button>
+        </p>
+        <p>
+            <button id="upload">Upload file(s)</button> <input type="file" id="upload_file" name="upload_file" multiple="">
+        </p>
+        <p>
+            <button id="mkdir">Create a new folder</button> <input type="text" id="new_folder" name="new_folder">
+        </p>
+
+        <table>
+            <thead><tr>
+                <th><input id="select_all" type="checkbox"></th>
+                <th>Name</th>
+                <th>Last modified</th>
+                <th>Size</th>
+            </tr></thead>
+            <tbody id="file_list">
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="js/fs.js"></script>
+</body>
+</html>

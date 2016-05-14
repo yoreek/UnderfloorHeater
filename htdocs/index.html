@@ -1,0 +1,90 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heating</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+</head>
+<body>
+    <div id="global_actions" class="heater">
+        <div class="heater-title-block container">
+            <div class="heater-title">My Heater</div>
+        </div>
+        <hr>
+        <button class="btn-large btn-left heater-mode" data-mode="off">Off</button>
+        <button class="btn-large btn-center heater-mode" data-mode="scheduled">Scheduled</button>
+        <button class="btn-large btn-center heater-mode" data-mode="manual">Manual</button>
+        <button class="btn-large btn-right heater-mode" data-mode="away">Away</button>
+    </div>
+
+    <div id="dashboard">
+    </div>
+    <div id="heater_template" class="heater" style="display:none">
+
+        <div class="heater-title-block container">
+            <div class="heater-title">Title</div>
+            <div class="current-time">15:16</div>
+        </div>
+
+        <hr>
+
+        <div class="heater-setpoint-block">
+            <div>HEATING SET TO:</div>
+            <div class="container">
+                <div class="heater-control">
+                    <div class="ajax-loader">&nbsp;</div>
+                    <div class="heater-state">&nbsp;</div>
+                    <button class="heater-schedule-button">SCH</button>
+                </div>
+                <div class="heater-setpoint"><span class="heater-setpoint-val">0.0</span>&deg;C</div>
+                <div class="heater-control">
+                    <button class="heater-setpoint-button" data-delta="0.1"><img src="img/up.png"></button>
+                    <button class="heater-setpoint-button" data-delta="-0.1"><img src="img/down.png"></button>
+                </div>
+            </div>
+            <div>Temperature now: <span class="heater-temperature"></span>&deg;C</div>
+        </div>
+
+        <button class="btn-large btn-left heater-mode" data-mode="off">Off</button>
+        <button class="btn-large btn-center heater-mode" data-mode="scheduled">Scheduled</button>
+        <button class="btn-large btn-center heater-mode" data-mode="manual">Manual</button>
+        <button class="btn-large btn-right heater-mode" data-mode="away">Away</button>
+
+        <div class="heater-schedule-block" style="display:none">
+            <br>
+            <div style="font-size:32px">Heating schedule</div>
+            <hr>
+
+            <div class="slider-segment-blank">
+
+                <div class="slider-segment-block" style="display:none">
+                    START:<input type="text" class="slider-segment-start"/>
+                    END:<input type="text" class="slider-segment-end"/>
+                    SETPOINT:<input type="text" class="slider-segment-temperature"/>&deg;C
+                    <button class="slider-segment-ok" style="float:right">OK</button>
+                </div>
+
+                <div class="slider-segment-block-movepos" style="display:none">
+                    TIME: <input type="text" class="slider-segment-time"/>
+                    <button class="slider-segment-movepos-ok" style="float:right" >OK</button>
+                </div>
+            </div>
+
+            <div class="console"></div>
+
+            <div class="slider" day="0"></div>
+            <div class="slider" day="1"></div>
+            <div class="slider" day="2"></div>
+            <div class="slider" day="3"></div>
+            <div class="slider" day="4"></div>
+            <div class="slider" day="5"></div>
+            <div class="slider" day="6"></div>
+
+            <div class="timemarker"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
