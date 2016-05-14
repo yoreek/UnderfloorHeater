@@ -5,15 +5,18 @@ The project is designed to control an heating system in order to keep the temper
 * Version: 1.0.0
 * Release Date: 2016-05-14
 
+
 ## Web interface
 
 ![Web interface](https://github.com/yoreek/UnderfloorHeater/blob/master/doc/main.png)
 
 ![Schedule](https://github.com/yoreek/UnderfloorHeater/blob/master/doc/schedule.png)
 
+
 ## File server
 
 ![File server](https://github.com/yoreek/UnderfloorHeater/blob/master/doc/fs.png)
+
 
 ## Features
 
@@ -25,6 +28,7 @@ The project is designed to control an heating system in order to keep the temper
  * Logging temperature and power consumption on SD card
  * File server
 
+
 ## Hardware
 
  * 1 Arduino Mega 2560
@@ -32,6 +36,7 @@ The project is designed to control an heating system in order to keep the temper
  * 1 SD card
  * 1 Thermistor per room
  * 1 Relay per room
+
 
 ## How do I get set up? ##
 
@@ -45,6 +50,7 @@ The project is designed to control an heating system in order to keep the temper
  * [Download](https://github.com/yoreek/Arduino-MyHeater/archive/master.zip) the Latest release from gitHub.
  * Unzip to any folder.
  * Run make to compile.
+
 
 ## Version History ##
 
