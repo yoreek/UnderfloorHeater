@@ -16,10 +16,17 @@ void MyHeaterTime::maintain() {
     if (millis() < _nextSync) return;
 
     DEBUG("udp.begin()");
+#ifdef UDP_SELECT_CUSTOM_SOCKET
     if (!udp.begin(_localPort, _UDP_SOCK_NUM)) {
         DEBUG("udp.begin() failed");
         goto FINISH;
     }
+#else
+    if (!udp.begin(_localPort)) {
+        DEBUG("udp.begin() failed");
+        goto FINISH;
+    }
+#endif
 
     DEBUG("get time");
     time = NtpClient::getTime(udp, *_server, _timeZone);
