@@ -11,25 +11,31 @@ AVR_TOOLS_DIR = /usr
 AVRDUDE_CONF = /etc/avrdude.conf
 ARDUINO_PORT = /dev/ttyACM0
 
-# No reset and no init modem
-#MONITOR_CMD = picocom -l -i -r
-MONITOR_CMD = picocom -l
+MONITOR_CMD = picocom
 
 # Custom path for libs (default: $(HOME)/sketchbook/libraries)
 #USER_LIB_PATH = $(HOME)/sketchbook/Robotics
 
-ARDUINO_LIBS = SPI               \
-               Wire              \
-               EEPROM            \
-               Ethernet          \
-               Time              \
-               StringUtil        \
-               DebugUtil         \
-               Yudino            \
-               SdFat             \
+ARDUINO_LIBS = SPI                                                      \
+               Wire                                                     \
+               EEPROM                                                   \
+               Ethernet                                                 \
+               Time                                                     \
+               StringUtil                                               \
+               DebugUtil                                                \
+               Yudino                                                   \
+               SdFat                                                    \
+               RF24                                                     \
                Webduino
 
-CXXFLAGS=-U__PROG_TYPES_COMPAT__ -DUSE_STRING_UTIL -DWITH_DEBUG -DWITH_NETWORK_DEBUG -DWITH_LOGGER_DEBUG
+CXXFLAGS=-std=c++11 -std=c++1y                                          \
+              -fno-move-loop-invariants -U__PROG_TYPES_COMPAT__         \
+              -Wall -Wno-uninitialized -Werror                          \
+              -Wno-strict-aliasing -Wno-sign-compare                    \
+              -DWITH_DEBUG -DUSE_PROGMEM -DUSE_STRING_UTIL              \
+              -DWITH_NETWORK_DEBUG -DWITH_LOGGER_DEBUG
+
+#CXXFLAGS=-U__PROG_TYPES_COMPAT__ -DUSE_STRING_UTIL -DWITH_DEBUG -DWITH_NETWORK_DEBUG -DWITH_LOGGER_DEBUG
 # Enable float type on sprintf
 #LDFLAGS=-lprintf_flt -lm
 # Fix bug with segfault during compilation

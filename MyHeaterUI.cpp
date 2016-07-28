@@ -7,6 +7,7 @@
 #include <StringUtil.h>
 #include "MyHeater.h"
 #include "MyHeaterUI.h"
+#include "MyRemoteSensors.h"
 
 #define MY_HEATER_UI_NAME_LEN   32
 #define MY_HEATER_UI_VALUE_LEN  256
@@ -157,6 +158,21 @@ static void webApiHeatersGet(MyHeaterUI &server, WebServer::ConnectionType type,
             server.print(temp);
         }
         server.print("}}");
+
+        obj = obj->next;
+        i++;
+    }
+
+    server.print("],\"remoteSensors\":[");
+
+    obj = myHeater->remoteSensors()->first();
+    i = 0;
+    while (obj != NULL) {
+        if (i > 0) {
+            server.print(",");
+        }
+
+        ((MyRemoteSensor *) obj)->printJson(server);
 
         obj = obj->next;
         i++;
@@ -537,10 +553,14 @@ MyHeaterUI::MyHeaterUI(const char *prefix, int port, const char *authCredentials
 void MyHeaterUI::maintain() {
     int len;
 
+#ifdef ETHERNET_SERVER_HAS_CUSTOM_SOCKET
     for (uint8_t sock = MY_HEATER_UI_MIN_SOCK_NUM; sock < MY_HEATER_UI_MAX_SOCK_NUM; sock++) {
         len = MY_HEATER_UI_BUFFER_LEN;
-        this->processConnection(MyHeaterUI::requestBuffer, &len);
+        this->processConnection(sock, MyHeaterUI::requestBuffer, &len);
     }
+#else
+    this->processConnection(MyHeaterUI::requestBuffer, &len);
+#endif
 }
 
 void MyHeaterUI::_addCommand(const char *verb, MyHeaterUICommand *cmd) {

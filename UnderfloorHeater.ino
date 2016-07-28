@@ -9,9 +9,14 @@
 #include <Yudino.h>
 #include "Config.h"
 #include "MyHeater.h"
+#include "MyMulticeiver.h"
+#include "MyRemoteSensors.h"
 #include <utility/w5100.h>
+#include <RF24.h>
 
-MyHeater *myHeater;
+MyHeater      *myHeater;
+RF24           radio(RADIO_CE_PIN, RADIO_CS_PIN);
+MyMulticeiver  multiceiver(&radio);
 
 SdFat sd;
 
@@ -77,6 +82,19 @@ void setup() {
     }
     SdFile::dateTimeCallback(dateTime);
 
+    // Init radio
+    radio.begin();
+    //radio.setAutoAck(1);
+    //radio.enableAckPayload();
+    radio.enableDynamicPayloads();
+    radio.setRetries(5, 15);
+    radio.setPALevel(RADIO_PA_LEVEL);
+    radio.setDataRate(RADIO_DATA_RATE);
+    radio.setChannel(RADIO_CHANNEL);
+    radio.openWritingPipe(RADIO_SERVER_ADDR);
+    radio.startListening();
+    radio.printDetails();
+
     MaintainedCollection *heaters = new MaintainedCollection(MAINTAIN_HEATERS_INTERVAL);
     heaters->add(new UnderfloorHeater(
         "kitchen",
@@ -100,6 +118,15 @@ void setup() {
         new DataLogger(&sd, "/log/hall/%Y-%M.txt", LOG_HEADER), LOG_INTERVAL
     ));
 
+    MyRemoteSensor *remoteSensor;
+    MaintainedCollection *remoteSensors = new MaintainedCollection(MAINTAIN_SENSORS_INTERVAL);
+    remoteSensor = new MyBedroomRemoteSensor(
+        "Bedroom",
+        new DataLogger(&sd, "/log/bedroom/sensor-%Y-%M.txt", BEDROOM_SENSOR_LOG_HEADER), LOG_INTERVAL
+    );
+    remoteSensors->add(remoteSensor);
+    multiceiver.set(1, remoteSensor);
+
     myHeater = new MyHeater(
         new MyHeaterConfig(CONFIG_VERSION, UPDATE_CONFIG_INTERVAL),
         new MyHeaterNetwork(
@@ -114,16 +141,21 @@ void setup() {
             NTP_FIRST_SYNC_INTERVAL,
             NTP_SYNC_INTERVAL,
             NTP_LOCAL_PORT,
-            NTP_TIME_ZONE
+            NTP_TIME_ZONE,
+            &radio,
+            TIME_BROADCAST_INTERVAL
         ),
         new MyHeaterUI(WEBSERVER_PREFIX, WEBSERVER_PORT,
             WEBSERVER_AUTH_CREDENTIALS, &sd),
-        heaters
+        heaters,
+        remoteSensors
     );
 }
 
 void loop() {
     myHeater->maintain();
+    multiceiver.maintain();
+
     if (millis() >= nextSockStat) {
         showSockStatus();
         nextSockStat = millis() + 10000;

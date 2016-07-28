@@ -11,17 +11,19 @@
 class MyHeater {
     public:
         MyHeater(
-            MyHeaterConfig       *config,
-            MyHeaterNetwork      *net,
-            MyHeaterTime         *time,
-            MyHeaterUI           *ui,
-            MaintainedCollection *heaters
+            MyHeaterConfig             *config,
+            MyHeaterNetwork            *net,
+            MyHeaterTime               *time,
+            MyHeaterUI                 *ui,
+            MaintainedCollection       *heaters,
+            MaintainedCollectionSimple *remoteSensors
         ) :
             _config(config),
             _net(net),
             _time(time),
             _ui(ui),
-            _heaters(heaters)
+            _heaters(heaters),
+            _remoteSensors(remoteSensors)
         {
             loadConfig();
         }
@@ -32,13 +34,17 @@ class MyHeater {
         MaintainedCollection *heaters(void) {
             return _heaters;
         };
+        MaintainedCollectionSimple *remoteSensors(void) {
+            return _remoteSensors;
+        };
 
     private:
-        MyHeaterConfig       *_config;
-        MyHeaterNetwork      *_net;
-        MyHeaterTime         *_time;
-        MyHeaterUI           *_ui;
-        MaintainedCollection *_heaters;
+        MyHeaterConfig             *_config;
+        MyHeaterNetwork            *_net;
+        MyHeaterTime               *_time;
+        MyHeaterUI                 *_ui;
+        MaintainedCollection       *_heaters;
+        MaintainedCollectionSimple *_remoteSensors;
 };
 
 #endif

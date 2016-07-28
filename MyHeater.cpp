@@ -9,6 +9,7 @@ void MyHeater::maintain() {
     }
 
     _heaters->maintain();
+    _remoteSensors->maintain();
 
     updateConfig(false);
 }
