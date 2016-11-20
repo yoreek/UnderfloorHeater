@@ -4,14 +4,17 @@ before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
   - sleep 3
   - export DISPLAY=:1.0
+
   - wget http://downloads.arduino.cc/arduino-1.6.7-linux64.tar.xz
   - tar xf arduino-1.6.7-linux64.tar.xz
   - sudo mv arduino-1.6.7 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+
   - wget https://github.com/yoreek/Arduino-DebugUtil/archive/master.zip
   - unzip master.zip
   - rm master.zip
   - sudo mv Arduino-DebugUtil-master /usr/local/share/arduino/libraries/DebugUtil
+
   - wget https://github.com/yoreek/Arduino-StringUtil/archive/master.zip
   - unzip master.zip
   - rm master.zip
@@ -21,19 +24,28 @@ before_install:
   - unzip master.zip
   - rm master.zip
   - sudo mv Time-master /usr/local/share/arduino/libraries/Time
+
   - wget https://github.com/JChristensen/Timezone/archive/master.zip
   - unzip master.zip
   - rm master.zip
   - sudo mv Timezone-master /usr/local/share/arduino/libraries/Timezone
+
   - wget https://github.com/greiman/SdFat/archive/master.zip
   - unzip master.zip
   - rm master.zip
   - sudo mv SdFat-master/SdFat /usr/local/share/arduino/libraries/SdFat
+
   - wget https://github.com/yoreek/Webduino/archive/master.zip
   - unzip master.zip
   - rm master.zip
   - rm -rf SdFat-master
   - sudo mv Webduino-master /usr/local/share/arduino/libraries/Webduino
+
+  - wget https://github.com/yoreek/Arduino-StateMachine/archive/master.zip
+  - unzip master.zip
+  - rm master.zip
+  - sudo mv Arduino-StateMachine-master /usr/local/share/arduino/libraries/StateMachine
+
   - wget https://github.com/yoreek/Yudino/archive/master.zip
   - unzip master.zip
   - rm master.zip
