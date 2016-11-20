@@ -27,7 +27,10 @@ static byte MAC_ADDRESSS[]       = { 0x70, 0x5A, 0xB6, 0x01, 0x02, 0x03 };
 #define NTP_FIRST_SYNC_INTERVAL    30   // seconds
 #define NTP_SYNC_INTERVAL          3600 // seconds
 #define NTP_LOCAL_PORT             8887
-#define NTP_TIME_ZONE              3
+// UTC +3-+2
+#define NTP_TIME_ZONE              (TimeChangeRule){"EEST", Last, Sun, Mar, 2, 180},\
+                                   (TimeChangeRule){"EET",  Last, Sun, Oct, 2, 120}
+
 #define TIME_BROADCAST_INTERVAL    60 // seconds
 
 #ifdef WITH_ICMP

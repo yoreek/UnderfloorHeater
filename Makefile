@@ -21,6 +21,7 @@ ARDUINO_LIBS = SPI                                                      \
                EEPROM                                                   \
                Ethernet                                                 \
                Time                                                     \
+               Timezone                                                 \
                StringUtil                                               \
                DebugUtil                                                \
                StateMachine                                             \

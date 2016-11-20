@@ -29,13 +29,13 @@ void MyHeaterTime::syncTime() {
 #endif
 
     DEBUG("get time");
-    time = NtpClient::getTime(udp, *_server, _timeZone);
+    time = NtpClient::getTime(udp, *_server, 0);
     if (time == 0) {
         DEBUG("Failed to update time");
         goto STOP_UDP;
     }
 
-    setTime(time);
+    setTime(_timeZone->toLocal(time));
     DEBUG("set time to: %F %T");
     _firstSync = false;
 

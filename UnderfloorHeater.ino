@@ -1,4 +1,5 @@
 #include <Time.h>
+#include <Timezone.h>
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EthernetUdp.h>
@@ -19,6 +20,8 @@ RF24           radio(RADIO_CE_PIN, RADIO_CS_PIN);
 MyMulticeiver  multiceiver(&radio);
 
 SdFat sd;
+
+Timezone tz(NTP_TIME_ZONE);
 
 static byte socketStat[MAX_SOCK_NUM];
 static unsigned long nextSockStat = 0;
@@ -141,7 +144,7 @@ void setup() {
             NTP_FIRST_SYNC_INTERVAL,
             NTP_SYNC_INTERVAL,
             NTP_LOCAL_PORT,
-            NTP_TIME_ZONE,
+            &tz, //NTP_TIME_ZONE,
             &radio,
             TIME_BROADCAST_INTERVAL
         ),

@@ -5,6 +5,7 @@
 #include <Ethernet.h>
 #include <EthernetUdp.h>
 #include <RF24.h>
+#include <Timezone.h>
 
 class MyHeaterTime {
     public:
@@ -13,7 +14,7 @@ class MyHeaterTime {
             uint32_t   firstSyncInterval,
             uint32_t   syncInterval,
             uint16_t   localPort,
-            uint8_t    timeZone,
+            Timezone  *timeZone,
             RF24      *radio = NULL,
             uint32_t   broadcastInterval = 0
         ) :
@@ -38,7 +39,7 @@ class MyHeaterTime {
         uint32_t   _firstSyncInterval;
         uint32_t   _syncInterval;
         uint16_t   _localPort;
-        uint8_t    _timeZone;
+        Timezone  *_timeZone;
         uint32_t   _nextSync;
         bool       _firstSync;
         RF24      *_radio;
