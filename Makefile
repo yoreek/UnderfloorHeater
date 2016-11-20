@@ -23,6 +23,7 @@ ARDUINO_LIBS = SPI                                                      \
                Time                                                     \
                StringUtil                                               \
                DebugUtil                                                \
+               StateMachine                                             \
                Yudino                                                   \
                SdFat                                                    \
                RF24                                                     \
