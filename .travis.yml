@@ -46,6 +46,11 @@ before_install:
   - rm master.zip
   - sudo mv Arduino-StateMachine-master /usr/local/share/arduino/libraries/StateMachine
 
+  - wget https://github.com/TMRh20/RF24/archive/master.zip
+  - unzip master.zip
+  - rm master.zip
+  - sudo mv RF24-master /usr/local/share/arduino/libraries/RF24
+
   - wget https://github.com/yoreek/Yudino/archive/master.zip
   - unzip master.zip
   - rm master.zip
