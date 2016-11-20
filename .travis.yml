@@ -16,10 +16,15 @@ before_install:
   - unzip master.zip
   - rm master.zip
   - sudo mv Arduino-StringUtil-master /usr/local/share/arduino/libraries/StringUtil
+
   - wget https://github.com/yoreek/Time/archive/master.zip
   - unzip master.zip
   - rm master.zip
   - sudo mv Time-master /usr/local/share/arduino/libraries/Time
+  - wget https://github.com/JChristensen/Timezone/archive/master.zip
+  - unzip master.zip
+  - rm master.zip
+  - sudo mv Timezone-master /usr/local/share/arduino/libraries/Timezone
   - wget https://github.com/greiman/SdFat/archive/master.zip
   - unzip master.zip
   - rm master.zip
